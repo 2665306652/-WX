@@ -1,0 +1,100 @@
+<view class='enterfirst'>
+  <view class='uploadidcard-basics'>请填写基本资料：</view>
+  <view class='weui-cells weui-cells_after-title enterfirst-weui-cells'>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label" >真实姓名</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" 
+          placeholder="请正确输入真实姓名" 
+          hidden="{{!cascading || !dialogShow}}"  
+          bindinput='onNameChange'
+        />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+      <view class="weui-cell__hd">
+        <view class="weui-label">手机号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input 
+          class="weui-input" 
+          placeholder="请输入手机号" 
+          type='number' 
+          maxlength='11'
+          bindinput='onTelChange'
+        />
+      </view>
+      <view class="weui-cell__ft">
+        <view 
+          class="weui-vcode-btn enterfirst-code" 
+          style='font-size: 28rpx;{{getCodeState && "color: #999"}}' 
+          bindtap='onGetCode'
+        >{{getCodeTxt}}
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label" >验证码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" 
+          placeholder="请正确输入验证码" 
+          bindinput='onCodeChange'
+          type='number'
+          maxlength='6'
+        />
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input" bindtap='villageSerachShow'>
+      <view class="weui-cell__hd">
+        <view class="weui-label" >关联小区</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-input editAddress-input">
+        {{editAddress.village ? editAddress.village : '点击关联小区'}}
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label" >房间号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" 
+          placeholder="请输入房间号" 
+          bindinput='onRoomChange'
+          maxlength='16'
+        />
+      </view>
+    </view>
+  </view>
+  <button type="warn" class='enterfirst-btn' bindtap='onUploadBtn'>下一步</button>
+</view>
+<!-- 编辑小区 -->
+<!-- <overlay id="J_edit_region"  class="userInfo-phone" customHeight="60%" customTitle='关联小区' sureButton="确认" bind:sure="regionSave">
+  <view class="editAddress-list" slot="custom-content">
+      <view class="list-item"  bindtap='villageSerachShow'>
+        <view class="item-title">小区名称：</view>
+        <view class="item-main">
+           <block wx:if="{{editAddress.village}}">
+            {{editAddress.village}}
+          </block>
+        </view>
+      </view>
+      <view class="list-item">
+        <view class="item-title">房间号：</view>
+        <input type="text" class="item-input" bindinput='onRoomChange' />
+      </view>
+  </view>
+</overlay>
+<villageSearch id="J_village_Search" searchValue="{{searchValue}}" bind:searchResult="searchResult" />
+ -->
+<!-- 选择小区 -->
+<villageSearch id="J_village_Search" searchValue="{{searchValue}}" bind:searchResult="searchResult" />
+

@@ -1,0 +1,89 @@
+.uploadcargo {
+  background-color: white;
+  color: #353535;
+}
+.uploadcargo .weui-cells .weui-cell .weui-label {
+  font-size: 28rpx;
+  color: #353535;
+}
+.uploadcargo .weui-cells .weui-cell .weui-input {
+  font-size: 28rpx;
+  color: #353535;
+}
+.uploadidcard-basics {
+  margin-bottom: 20rpx;
+  margin-left: 30rpx;
+  padding-top: 20rpx;
+  font-size: 28rpx;
+}
+.uploadcargo-basics {
+  margin-bottom: 20rpx;
+  padding-top: 20rpx;
+}
+.uploadidcard-photo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+.uploadidcard-photo-box {
+  float: none;
+  width: 90%;
+  height: auto;
+  min-height: 366rpx;
+  margin: 0;
+}
+.ploadidcard-image {
+  width: 90%;
+}
+.enterfirst-right-textarea {
+  margin: 0;
+  padding: 0;
+  margin-top: 10rpx;
+  height: 143rpx;
+  width: 100%;
+  line-height: 0;
+  transform: translate(-8rpx)
+}
+.uploadcargo-describe {
+  border: 1rpx solid #ccc;
+  width: 100%;
+  min-height: 366rpx;
+  font-size: 28rpx;
+}
+.uploadcargo-basics-input::before {
+  content: '';
+  display: block;
+  border: 0;
+}
+.uploadcargo-selectcell {
+  border: 1rpx solid #ccc;
+  width: 100%;
+  font-size: 28rpx;
+  overflow: hidden;
+}
+.uploadcargo-removeimage {
+  position: relative;
+  margin-top: 18rpx;
+  margin-bottom: 0;
+}
+.enterfirst-btn {
+  margin: 62rpx 30rpx 0 30rpx;
+}
+.uploadcargo-removebox {
+  position: absolute;
+  top: -.8em;
+  right: -.8em;
+  z-index: 66;
+  font-size: 15rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background-color: orangered;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.uploadcargo-removeicon::after {
+  content: "\e64d";
+}

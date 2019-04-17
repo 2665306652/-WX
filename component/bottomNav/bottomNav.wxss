@@ -1,0 +1,50 @@
+/* component/bottomNav/bottomNav.wxss */
+@import '../../app.wxss';
+.mui-act-bottomNav{
+    width:100%;
+    height: 100rpx;
+    overflow: hidden;
+}
+.mui-act-bottomNav .bottomNav-main{
+    width:100%;
+    height:95rpx;
+    line-height: 95rpx;
+    position: fixed;
+    left:0;bottom:0;
+    z-index: 80;
+    display: flex;
+    text-align: center;
+    background: #fff;
+    border-top:1rpx solid #ccc;
+    font-size: 24rpx;
+    color:#58595b;
+
+}
+.mui-act-bottomNav .bottomNav-XXX{
+  padding-bottom: 40rpx;
+}
+.mui-act-bottomNav .mian-item{
+    flex: 1;
+}
+.mui-act-bottomNav .item-icon{
+    display: block;
+    font-size: 42rpx;
+    line-height: 70rpx;
+}
+.mui-act-bottomNav .icon-index::after{
+    content:'\e600';
+}
+.mui-act-bottomNav .icon-sell::after{
+    content:'\e612'
+}
+.mui-act-bottomNav .icon-owner::after{
+    content:'\e610'
+}
+.mui-act-bottomNav .item-text{
+    line-height: 24rpx;
+    display: block;
+}
+.mui-act-bottomNav .item-checked{
+    color:#e94f4f;
+    /* color:#e64340; */
+}

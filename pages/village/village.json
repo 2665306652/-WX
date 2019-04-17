@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "villageSearch" : "/component/villageSearch/villageSearch",
+    "overlay" : "/component/overlay/overlay"
+  },
+  "navigationBarTitleText": "关联小区"
+}

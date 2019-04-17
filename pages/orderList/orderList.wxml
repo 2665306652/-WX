@@ -1,0 +1,147 @@
+<!--pages/orderlist/orderlist.wxml-->
+<view class="wrap-order">
+    <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索</view>
+            </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+    </view>
+    <view class="wrap-order-nav">
+        <block wx:for="{{isBusiness == true ? tabsBu : tabs}}" wx:key="{{index}}">
+            <view bindtap="tapChange" data-index="{{index + 1}}" class="order-nav-item {{activeIndex == index + 1 ? 'active' : ''}}">{{item}}</view>
+        </block>
+    </view>
+    <view class="wrap-order-list {{orderList.length ? '' : 'list-empty iconfont'}}">
+        <block wx:for="{{orderList}}" wx:key="{{index}}">
+            <view class="order-list-item">
+                <view class="list-item-head" bindtap="onSellerShow">
+                    <view class="item-head-shop">
+                        <image class="head-shop-logo" src="{{item.businessimg}}" />
+                        <view class="head-shop-name">{{item.businessname}}</view>
+                        <view class="head-shop-icon iconfont"></view>
+                    </view>
+                    <view class="list-item-status">{{item.orderstatus == '1' ?'已付款' : item.orderstatus == '2' ? '已取消' : item.orderstatus == '3' ? '配送中' : item.orderstatus == '4' ? '已收货' : item.orderstatus == '5' ? '已评价' : ''}}</view>
+                </view>
+                <navigator url="/pages/orderDetails/orderDetails?&id={{item.id}}">
+                    <view class="list-item-body">
+                        <image class="item-body-img" src="{{item.productmap}}"/>
+                        <view class="item-body-box">
+                            <view class="body-box-top">
+                                <view class="item-body-text">
+                                    <view class="body-text-title">{{item.productname}}</view>
+                                    <view class="body-text-des">{{item.description}}</view>
+                                </view>
+                                <view class="item-body-price">
+                                    <view class="body-price-money">￥{{item.unitprice}}</view>
+                                    <view class="body-price-num">x{{item.quantity}}</view>
+                                </view>
+                            </view>
+                            <view class="list-item-sum">
+                                <!-- <view class="item-sum-isold">二手</view> -->
+                                <view class="item-sum-con">共计 {{item.quantity}} 件 合计：￥{{item.totalprice}} </view>
+                            </view>
+                        </view>
+                        
+                        
+                    </view>
+                    
+                </navigator>
+                <!-- <block wx:if="{{item.orderstatus != 3}}">
+                    <view class="list-item-footer">
+                        <navigator class="button-default" url="/pages/orderDetails/orderDetails?id={{item.id}}">查看</navigator>
+                    </view>
+                    <view class="list-item-footer">
+                        <view class="button-default">确认收货</view>
+                    </view>
+                </block> 
+                <block wx:else> -->
+                    <view class="list-item-footer">
+                        <navigator class="button-default" url="/pages/orderDetails/orderDetails?id={{item.id}}">查看</navigator>
+                    </view>
+                <!-- </block> -->
+            </view>
+
+        </block>
+    </view>
+    
+</view>
+<overlay id="J_details_seller" class="details-seller" customTitle="卖家详情" customHeight="91%" sureButton="关闭" bind:sure="onSellerHide">
+    <view class="details-seller-main" slot="custom-content">
+        <view class="details-seller-title">
+            <image src="{{list.seller.photo}}" class="seller-title-pic" />
+            <view class="seller-title-info">
+                <view class="title-info-price">{{list.names}}</view>
+                <view class="title-info-stock">{{list.addressinfo}}</view>
+                <view class="title-info-tip">信用值:{{list.usetrust}}</view>
+            </view>
+        </view>
+        <view class="details-list-title">详细信息</view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-house iconfont" />
+            <view class="list-item-title">注册小区:</view>
+            <block wx:for="{{list.seller.registerHouse}}" wx:key="{{index}}">
+                <view class="list-item-address">{{item.name}}</view>
+            </block>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-timer iconfont" />
+            <view class="list-item-title">注册时间:</view>
+            <view class="list-item-time">{{list.gmtcreate}}</view>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-type-number iconfont" />
+            <view class="list-item-title">在售商品数量:</view>
+            <view class="list-item-time">{{list.instock}}种</view>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-order iconfont" />
+            <view class="list-item-title">交易单数:</view>
+            <view class="list-item-time">{{list.usersoldordernumber}}单</view>
+        </view>
+        <view class="details-seller-list seller-list-auth">
+            <view class="seller-list-pic seller-list-neighbour iconfont" />
+            <view class="seller-list-item">
+                <view class="list-item-type">
+                    <text class="item-type-title">邻居认证:</text>
+                    <block wx:for="{{list.seller.neighborAuth}}" wx:key="{{index}}">
+                        <image class="seller-auth-photo" src="{{item.photo}}" />
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-card iconfont" />
+            <view class="seller-list-item">
+                <view class="list-item-type">
+                    <text class="item-type-title">身份证验真:</text>
+                    <text class="list-item-status {{list.approvalstatus == 4 ? 'status-true' : 'status-false'}}">{{list.approvalstatus == 4 ? '已认证' : '未认证'}}</text>
+                </view>
+                <view class="list-item-desc">{{list.approvalstatus == 4 ? '已完成证件验真' : '未完成证件验真'}}</view>
+            </view>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-iphone iconfont" />
+            <view class="seller-list-item">
+                <view class="list-item-type">
+                    <text class="item-type-title">手机号验证:</text>
+                    <text class="list-item-status {{list.isphone ? 'status-true' : 'status-false'}}">{{list.isphone ? '已认证' : '未认证'}}</text>
+                </view>
+                <view class="list-item-desc">
+                    {{list.isphone ? '已完成手机号验证' : '未完成手机号验证'}}
+                </view>
+            </view>
+        </view>
+    </view>
+</overlay>
+
+<bottomNav content="<view>12323123123123123123231</view>"></bottomNav>

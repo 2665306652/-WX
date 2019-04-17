@@ -1,0 +1,11 @@
+<view class='freeze'>
+  <view class='freeze-main'>
+    <view class='iconfont freeze-icon'></view>
+    <view class='freeze-text'>
+      由于您的账号存在违规操作，已被冻结
+    </view>
+    <view class='freeze-text'>
+      解冻请联系：123456789
+    </view>
+  </view>
+</view>

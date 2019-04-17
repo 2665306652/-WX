@@ -1,0 +1,204 @@
+<!-- pages/userInfo/userInfo.wxml -->
+<view class="container mui-act-userInfo">
+    <view class="userInfo-list">
+        <view class="list-item list-photo">
+            <image class="item-photo" src="{{userInfo.avatar}}" />
+            <view class="item-name">
+                <view class="main-nickName">{{userInfo.nickname}}</view>
+                <block wx:if="{{userInfo.approvalstatus == 4}}">
+                    <view class="main-trust">卖家信任值:{{userInfo.usetrust}}</view>
+                </block>
+            </view>
+        </view>
+        <view class="list-item list-buyer list-item-more">
+            <view class="item-title">买家信息</view>
+            <view class="item-main iconfont" bindtap="onEditPhone">
+                <view class="main-title">手机号码</view>
+                <view class="main-text">{{userInfo.phone}}</view>
+            </view>
+            <view class="item-main iconfont" bindtap="onEditName">
+                <view class="main-title">真实姓名</view>
+                <view class="main-text">{{userInfo.names}}</view>
+            </view>
+            <navigator url="/pages/village/village" class="item-main iconfont">
+                <view class="main-title">关联小区</view>
+            </navigator>
+        </view>
+        <block wx:if="{{userInfo.approvalstatus == 4}}">
+            <view class="list-item list-seller list-item-more">
+                <view class="item-title">卖家信息</view>
+                <view class="item-main iconfont">
+                    <view class="main-title">手机认证</view>
+                    <view class="main-text main-auth">未认证</view>
+                </view>
+                <view class="item-main iconfont">
+                    <view class="main-title">身份证认证</view>
+                    <view class="main-text main-auth auth-true">已认证</view>
+                </view>
+            </view>
+        </block>
+        <!-- <view class="list-item list-photo iconfont">
+            <view class="item-title">头像</view>
+            <view class="item-main">
+                <image class="item-photo" src="{{userInfo.avatarUrl}}" />
+            </view>
+        </view>
+        <view class="list-item iconfont">
+            <view class="item-title">昵称</view>
+            <view class="item-main">{{userInfo.nickName}}</view>
+        </view>
+       
+        <view class="list-item iconfont" bindtap="editPhoneShow">
+            <view class="item-title">手机号</view>
+            <view class="item-main">15158152867</view>
+        </view>
+        <view class="list-item iconfont" bindtap="editPhoneShow">
+            <view class="item-title">邻居认证</view>
+            <view class="item-main">未认证</view>
+        </view>
+        <view class="list-item iconfont" bindtap="editPhoneShow">
+            <view class="item-title">身份证认证</view>
+            <view class="item-main">未认证</view>
+        </view>
+        <view class="list-item iconfont" >
+            <view class="item-title">收货地址</view>
+            <view class="item-main"></view>
+        </view>
+        <view class="address-main userInfo-address">
+            <block wx:for="{{addressArr}}" wx:key="{{index}}">
+                <view class="list-items" bindtap="editAddressShow" data-item="{{item}}">
+                    <view class="item-left"></view>
+                    <view class="item-photo">{{item.name[0]}}</view>
+                    <view class="item-address">
+                        <view class="address-info">
+                            <view class="info-name">{{item.name}}</view>
+                            <view class="info-phone">{{item.phone}}</view>
+                        </view>
+                        <view class="address-details">{{item.province}} {{item.city}}  {{item.area}} {{item.village}} {{item.house}}</view>
+                    </view>
+                    <view class="item-del iconfont"></view>
+                </view>
+            </block>
+            <block wx:if="{{addressArr.length < 3}}">
+                <view class="list-items list-add" bindtap="editAddressShow" data-item="{{initAddress}}">
+                     <view class="item-left"></view>
+                    <view class="item-photo">+</view>
+                     <view class="add-item">新增地址</view>
+                </view>
+                
+            </block> 
+        </view> -->
+    </view>
+</view>
+<!-- 编辑手机号 -->
+<overlay id="J_edit_phone" class="userInfo-phone" customHeight="36%" customTitle='修改手机号' sureButton="确认" bind:sure="onEditPhoneSave">
+    <view class="editPhone-list" slot="custom-content">
+        <view class="list-item">
+            <view class="item-title">手机号：</view>
+            <input type="number" bindinput="onPhoneChange" value="{{editPhone}}" maxlength="11" class="item-photo {{!phoneStatus ? '' : 'item-red'}}" />
+        </view>
+        <view class="list-item">
+            <view class="item-title">验证码：</view>
+            <input type="number" bindinput="onEditPhoneCode" maxlength="6" class="item-code" />
+            <view class="item-getCode {{!codeStatus ? 'item-gray' : ''}}" bindtap="onGetPhoneCode">{{codeText}}</view>
+        </view>
+        
+    </view>
+</overlay>
+<!-- 编辑真实姓名 -->
+<overlay id="J_edit_name" class="userInfo-phone" customHeight="30%" customTitle='修改真实姓名' sureButton="确认" bind:sure="onEditNameSave">
+    <view class="editPhone-list" slot="custom-content">
+        <view class="list-item">
+            <view class="item-title">真实姓名：</view>
+            <input type="number" bindinput="onNameChange" value="{{editName}}" maxlength="11" class="item-photo" />
+        </view>
+        <!-- <view class="list-item">
+            <view class="item-title">验证码：</view>
+            <input type="number" maxlength="4" class="item-code" />
+            <view class="item-getCode">获取验证码</view>
+        </view> -->
+    </view>
+</overlay>
+
+
+<view class="mui-act-overlay userInfo-phone" hidden="{{!userInfoPhone}}">
+    <view class="overlay-mask" bindtap="editPhoneHide"></view>
+    <view class="act-overlay-main" animation="{{animation}}">
+        <view class="act-overlay-close iconfont" bindtap="editPhoneHide"></view>
+        <view class="act-main-content">
+            <view class="editPhone-list">
+                <view class="list-title">修改手机号：</view>
+                <view class="list-item">
+                    <view class="item-title">手机号：</view>
+                    <input type="number" maxlength="11" class="item-photo" />
+                </view>
+                <view class="list-item">
+                    <view class="item-title">验证码：</view>
+                    <input type="number" maxlength="4" class="item-code" />
+                    <view class="item-getCode">获取验证码</view>
+                </view>
+            </view>
+            <view class="act-overlay-sure">
+                <!-- <button class="overlay-sure overlay-gary" bindtap="editPhotoHide">关闭</button> -->
+                <button type="warn" class="overlay-sure " bindtap="editPhoneSure">确认</button>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 省市区级联 -->
+<view class='enterfirst-cascading' hidden="{{!cityChangeStatus}}" bindtap="cascadingHide">
+    <view class='enterfirst-cascading-content' catchtap="cascadingClick" bindpickstart="cascadingStart">
+        <view class="content-button">
+            <view class="button-canlce">取消</view>
+            <view class="button-sure" bindtap="cityChangeSure">确认</view>
+        </view>
+        <picker-view indicator-style="height: 50px;line-height:50px;paddingLeft: 6px" class='enterfirst-cascading-main' value="{{value}}" bindchange="cascadingChange">
+            <picker-view-column>
+                <view wx:for="{{provinces}}" wx:key="{{item}}" style="line-height: 50px;">
+                    {{item}}
+                </view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{citys}}" wx:key="{{item}}" style="line-height: 50px;">
+                    {{item}}
+                </view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{areas}}" wx:key="{{item}}" style="line-height: 50px">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+</view>
+<!-- 小区搜索 -->
+<view class="village-search" hidden="{{!villageSearch}}" animation="{{searchAnimation}}">
+    <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" bindinput="inputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索</view>
+            </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">
+            取消
+        </view>
+    </view>
+    <view class="search-result">
+        <view class="res-item">111</view>
+        <view class="res-item">
+            <view class="item-add">
+                没有找到所在小区?
+                <navigator class="add-link" target="" url="" hover-class="navigator-hover" open-type="navigate">
+                    请点此申请
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<bottomNav checkedIndex="2" id="bottomNav"></bottomNav>

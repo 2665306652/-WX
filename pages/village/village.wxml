@@ -1,0 +1,68 @@
+<!-- pages/village/village.wxml -->
+<view class="container mui-village">
+    <view class="address-main">
+        <block wx:for="{{addressArr}}" wx:key="{{index}}">
+            <view class="list-items" bindtap="onEditAddressShow" data-item="{{item}}" data-index="{{index}}">
+                <view class="item-photo">{{item.username[0]}}</view>
+                <view class="item-address">
+                    <view class="address-info">
+                        <view class="info-name">{{item.username}}</view>
+                        <view class="info-phone">{{item.userphone}}</view>
+                    </view>
+                    <view class="address-details">
+                        <block wx:if="{{item.def == 0}}">
+                             <view class="details-isDef">默认</view>
+                        </block>{{item.province}},{{item.city}},{{item.area}},{{item.communityname}},{{item.addressinfo}}
+                    </view>
+                </view>
+                <view class="item-edit">编辑</view>
+            </view>
+        </block>
+        <block wx:if="{{addressArr.length < 3}}">
+            <view class="list-items list-add" bindtap="onEditAddressShow" data-item="{{initAddress}}" data-index="-1">
+                <view class="item-photo">+</view>
+                <view class="add-item">新增地址</view>
+            </view>
+        </block>
+    </view>
+</view>
+<!-- 编辑小区信息 -->
+<overlay id="J_edit_address" customTitle="编辑收货地址"  customHeight="{{editAddress.house ? '68%' : '60%' }}" sureButton="确认" bind:sure="onAddressSave">
+    <view class="editAddress-list" slot="custom-content">
+        <view class="list-item">
+            <view class="item-title">收货人：</view>
+            <!-- <view class="item-main">薛润芝</view> -->
+            <input type="text" bindinput="onUserNameChange" value="{{editAddress.username}}" class="item-input" />
+        </view>
+        <view class="list-item">
+            <view class="item-title">手机号码：</view>
+            <input type="text" bindinput="onUserPhoneChange" value="{{editAddress.userphone}}" class="item-input {{userphoneStatus ? 'item-red' : ''}}" />
+        </view>
+        <view class="list-item" bindtap="onVillageSerachShow">
+            <view class="item-title">小区名称：</view>
+            <view class="item-main">
+                <block wx:if="{{editAddress.city}}">
+                    {{editAddress.province}},{{editAddress.city}},{{editAddress.area}},{{editAddress.communityname}},{{editAddress.detail}}
+                </block>
+            </view>
+        </view>
+        <view class="list-item">
+            <view class="item-title">房间号：</view>
+            <input type="text" bindinput="onAddressInfoChange" value="{{editAddress.addressinfo}}" class="item-input" />
+        </view>
+        <block wx:if="{{editAddress.def == 1 || editAddressIndex == -1 }}">
+            <view class="list-item weui-cell weui-cell_switch">
+            <view class="weui-cell__bd item-title">是否设置默认：</view>
+            <view class="weui-cell__ft">
+                <switch bindchange="onDefChange" checked="{{editAddress.defStatus == 0 ? true : false }}" />
+            </view>
+        </view>
+        </block>
+        <block wx:if="{{editAddressIndex > -1 && addressArr.length > 1}}">
+            <view class="list-item" catchtap="onAddressDel" data-item="{{editAddress}}">
+                <view class="item-title item-del">删除当前地址</view>
+            </view>
+        </block>
+    </view>
+</overlay>
+<villageSearch id="J_village_Search" searchValue="{{searchValue}}" bind:searchResult="onSearchResult" />

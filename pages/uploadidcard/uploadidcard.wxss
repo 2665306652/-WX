@@ -1,0 +1,43 @@
+.uploadidcard {
+  background-color: white;
+  min-height: 100vh;
+  font-size: 28rpx !important;
+  padding-bottom: 30rpx;
+  color: #353535;
+}
+.uploadidcard .weui-cells .weui-cell .weui-label {
+  font-size: 28rpx;
+  color: #353535;
+}
+.uploadidcard .weui-cells .weui-cell .weui-input {
+  font-size: 28rpx;
+  color: #888;
+}
+.uploadidcard-basics {
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+  font-size: 32rpx;
+}
+.uploadidcard-photo {
+  display: flex;
+  justify-content: center;
+}
+.uploadidcard-photo-box {
+  float: none;
+  width: 90%;
+  height: auto;
+  min-height: 366rpx;
+  margin: 0;
+}
+.ploadidcard-image {
+  width: 90%;
+}
+.enterfirst-btn {
+  margin: 62rpx 30rpx;
+  margin-bottom: 0;
+}
+.enterfirst-code {
+  min-width: 66rpx;
+  color: #e94f4f;
+}

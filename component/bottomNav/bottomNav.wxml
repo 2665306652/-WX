@@ -1,0 +1,49 @@
+<!-- component/bottomNav/bottomNav.wxml -->
+<!-- <text>component/bottomNav/bottomNav.wxml</text> -->
+<view class="mui-act-bottomNav">
+    <view class="bottomNav-main {{isIphoneX ? 'bottomNav-XXX' : ''}}">
+       
+        <block wx:if="{{checkedIndex == 0}}">
+            <view class="mian-item item-checked" target="" url="../../pages/index/index" hover-class="navigator-hover" open-type="reLaunch">
+                <text class="icon-index item-icon iconfont"></text>
+                <text class="item-text">首页</text>
+            </view>
+        </block>
+        <block wx:else>
+            <navigator class="mian-item" target="" url="../../pages/index/index" hover-class="navigator-hover" open-type="reLaunch">
+                <text class="icon-index item-icon iconfont"></text>
+                <text class="item-text">首页</text>
+            </navigator>
+        </block>
+
+        <block wx:if="{{checkedIndex == 1}}">
+            <view class="mian-item {{checkedIndex == 1 ? 'item-checked' : ''}} " target="" url="" hover-class="navigator-hover" open-type="navigate">
+                <text class="icon-sell item-icon iconfont"></text>
+                <text class="item-text">我要卖</text>
+            </view>
+        </block>
+        <block wx:else>
+            <!-- <navigator class="mian-item {{checkedIndex == 1 ? 'item-checked' : ''}} " target="" url="../../pages/uploadidcard/uploadidcard" hover-class="navigator-hover" open-type="navigate"> -->
+          <view class="mian-item {{checkedIndex == 1 ? 'item-checked' : ''}}" bindtap='wantSell'>
+            <text class="icon-sell item-icon iconfont"></text>
+            <text class="item-text">我要卖</text>
+          </view>
+            <!-- </navigator> -->
+        </block>
+        
+        <block wx:if="{{checkedIndex == 2}}">
+            <view class="mian-item {{checkedIndex == 2 ? 'item-checked' : ''}} " target="" url="../../pages/mycenter/mycenter" hover-class="navigator-hover" open-type="reLaunch">
+                <text class="icon-owner item-icon iconfont"></text>
+                <text class="item-text">我的</text>
+            </view>
+        </block>
+        <block wx:else>
+            <!-- <navigator class="mian-item {{checkedIndex == 2 ? 'item-checked' : ''}} " target="" url="../../pages/mycenter/mycenter" hover-class="navigator-hover" open-type="reLaunch"> -->
+            <view class="mian-item {{checkedIndex == 2 ? 'item-checked' : ''}} " bindtap='onSkipCenter'>
+                <text class="icon-owner item-icon iconfont"></text>
+                <text class="item-text">我的</text>
+            </view>
+            <!-- </navigator> -->
+        </block>
+    </view>
+</view>

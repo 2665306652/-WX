@@ -1,0 +1,269 @@
+/* pages/orderlist/orderlist.wxss */
+.weui-search-bar{
+    background: none;
+    border: 0 none;
+}
+
+.regulate-search-btn {
+  font-size: 24rpx;
+  color: #e94f4f;
+}
+
+.wrap-order-nav{
+    width: 90%;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    margin:0 auto;
+    padding:0 5%;
+}
+.wrap-order-nav .order-nav-item{
+    flex: 1;
+    font-size: 28rpx;
+    padding: 16rpx;
+    position: relative;
+    text-align: center;
+}
+.wrap-order-nav .active{
+    /* color: #00d819; */
+    color:#e94f4f;
+}
+.wrap-order-nav .active::after{
+    width: 100%;
+    height: 2rpx;
+    background: #e94f4f;
+    position: absolute;
+    bottom: 2rpx;
+    left: 50%;
+    content: "";
+    margin-left: -50%;
+}
+.wrap-order-list,.order-list-item{
+    width: 96%;
+    margin:10rpx auto;
+}
+.order-list-item{
+    width:100%;
+    margin: 10rpx 0;
+    background: #fff;
+    border-radius: 20rpx;
+    padding-bottom:20rpx;
+    overflow: hidden;
+
+}
+.item-head-shop{
+    display: flex;
+    justify-content: start ;
+    align-items: center;
+}
+.list-item-head,.list-item-body{
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+}
+.list-item-head{
+    line-height: 48rpx;
+    background: #FFFFFF;
+    border-radius: 20rpx 20rpx 0 0;
+}
+.list-item-head .head-shop-logo{
+    width: 60rpx;
+    height: 60rpx;
+    margin:16rpx 20rpx;
+    background: #CCC;
+    border-radius: 60rpx;
+}
+.list-item-head .head-shop-name{
+    /* padding-left:20rpx; */
+    font-size: 28rpx;
+}
+.list-item-head .head-shop-icon{
+    font-size: 28rpx;
+    color: #BCBCBC;
+}
+.list-item-head .head-shop-icon::after{
+    content: '\e6ba'
+}
+.list-item-status{
+    font-size: 24rpx;
+    color: red;
+    margin-right: 20rpx;
+}
+.list-item-body{
+    padding: 10rpx 20rpx;
+}
+.item-body-img{
+    width: 200rpx;
+    height: 200rpx;
+    background: #CCC;
+    margin-right: 16rpx;
+}
+.item-body-box{
+    width: 70%;
+    overflow: hidden;
+    align-self:flex-start;
+    height: 200rpx;
+    position: relative;
+}
+.body-box-top{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.item-body-text{
+    align-self:flex-start;
+    width: 75%;
+}
+.body-text-title,.body-price-money{
+    font-size: 26rpx;
+}
+.body-text-des,.body-price-num{
+    font-size: 22rpx;
+    color: #CCC;
+    line-height: 26rpx;
+}
+.item-body-price{
+    width: 10%;
+    text-align: right;
+}
+
+.list-item-buyer .item-body-img{
+    width:80rpx;
+    height:80rpx;
+    border-radius: 80rpx;
+}
+.list-item-buyer .item-body-text{
+    flex:1;
+}
+
+
+
+.list-item-sum{
+    background: #ffffff;
+    font-size: 28rpx;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+    width: 100%;
+}
+.list-item-footer{
+    background: #ffffff;
+    text-align: right;
+    padding:10rpx 20rpx;
+    border-top:#e5e5e5 2rpx solid;
+}
+.list-item-footer .button-default{
+    display: inline-block;
+    margin-top:10rpx;
+}
+
+.details-seedGoods .seedGoods-title,.details-takeGoods .takeGoods-title{
+    width:96%;
+    line-height: 45rpx;
+    overflow: hidden;
+    margin:20rpx auto;
+    font-size:30rpx;
+}
+.details-seedGoods .act-overlay-main{
+    height:49%;
+}
+.details-seedGoods .seedGoods-main{
+    height:432rpx;
+}
+.details-seedGoods .act-overlay-sure{
+    display: flex;
+    border:none;
+    border-radius: 0;
+}
+.details-seedGoods .overaly-sure{
+    flex: 1;
+}
+
+.details-seedGoods .list-item{
+    width:96%;
+    line-height: 60rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1rpx solid #e5e5e5;
+    font-size: 28rpx;
+    color: #353535;
+    margin:0 auto;
+}
+.details-seedGoods .list-item:last-child{
+    border-bottom: none;
+}
+
+
+
+
+.details-takeGoods .act-overlay-main{
+    height:35.4%;
+}
+
+/* .details-takeGoods .takeGoods-title{ */
+    /* margin-top:80rpx; */
+/* } */
+.details-takeGoods .takeGoods-main{
+    width:96%;
+    overflow: hidden;
+    margin:60rpx auto;
+    display: flex;
+    position: relative;
+}
+.details-takeGoods .takeGoods-input,.details-takeGoods .show-item{
+    flex :1;
+    height: 98rpx;
+    line-height: 98rpx;
+    margin: 0 10rpx;
+    font-size: 36rpx;
+    border:1px solid #BCBCBC;
+    text-align: center;
+}
+.details-takeGoods .takeGoods-hidden{
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;top:0;
+    background: #CCC;
+    opacity: 0;
+}
+.details-takeGoods .takeGoods-mains{
+    width:96%;
+    overflow: hidden;
+    margin:60rpx auto;
+    position: relative;
+}
+.details-takeGoods .main-show{
+    width:100%;
+    overflow: hidden;
+    display: flex;
+}
+.details-takeGoods .takeGoods-mains .main-input{
+    opacity: 0;
+}
+.list-empty{
+  
+  position: relative;
+}
+.list-empty::after{
+  content : '\e639';
+  font-size: 100px;
+  margin:0 auto;
+  position: absolute;
+  left:50%;
+  top:0rpx;
+  transform: translateX(-50%);
+  color: #e5e5e5;
+}
+/* .details-seedGoods .act-overlay-sure .overlay-sure,.details-seedGoods .act-overlay-sure .overlay-sure::after,.details-takeGoods .act-overlay-sure .overlay-sure,.details-takeGoods .act-overlay-sure .overlay-sure::after{
+   flex:1;
+   border-radius: 0;
+   border:none;
+   line-height: 80rpx;
+  
+  } */

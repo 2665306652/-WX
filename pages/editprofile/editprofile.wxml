@@ -1,0 +1,119 @@
+<view class="editprofile">
+  <view class='editprofile-box'>
+    <view class="weui-cells weui-cells_after-title" style='margin-bottom: 30rpx'>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">头像</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view 
+            class='weui-input editprofile-value editprofile-image-box' 
+            data-value="{{userInfo.avatarUrl}}" 
+            data-item='0' 
+            bindtap='modify'
+          >
+            <image mode='aspectFill' src='{{userInfo.avatarUrl}}' class='editprofile-image'/>
+          </view>
+        </view>
+        <view class='iconfont arrow mycenter-arrow'></view>
+      </view>
+
+      <view class="weui-cell box-item weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">昵称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view 
+            class='weui-input editprofile-value' 
+            data-value='{{userInfo.nickName}}' 
+            data-item='1' 
+            bindtap='modify'
+          >{{userInfo.nickName}}
+          </view>
+        </view>
+        <view class='iconfont arrow mycenter-arrow'></view>
+      </view>
+
+      <view class="weui-cell box-item weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">性别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class='weui-input editprofile-value' data-value='男' data-item='2' bindtap='modify'>男</view>
+        </view>
+        <view class='iconfont arrow mycenter-arrow'></view>
+      </view>
+
+      <view class="weui-cell box-item weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">手机号</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class='weui-input editprofile-value' data-value='18888888888' data-item='3' bindtap='modify'>18888888888</view>
+        </view>
+        <view class='iconfont arrow mycenter-arrow'></view>
+      </view>
+
+      <view class="weui-cell box-item weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">我的收货地址</view>
+        </view>
+        <!-- <view class="weui-cell__bd">
+          <view class='weui-input editprofile-value' data-value='18888888888' data-item='3' bindtap='modify'>18888888888</view>
+        </view> -->
+        <view class='iconfont arrow mycenter-arrow'></view>
+      </view>
+
+    </view>
+
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">其他</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class='weui-input editprofile-value'>
+          </view>
+        </view>
+        <view class='iconfont arrow mycenter-arrow'></view>
+      </view>
+    </view>
+
+    <!-- <button type="warn" class="button-edit">编辑资料</button> -->
+  </view>
+
+  <view class='regulate-dialog' hidden='{{sellerShow}}' bindtap='sellerHidden'>
+    <view class='dialog-box' animation="{{animation}}" catchtap='stopPrevent'>
+      <view class='dialog-btn'>
+        <view></view>
+        <view class='dialog-title'>{{dialogTitle}}</view>
+        <view class='dialog-close' bindtap='dialogOff'>
+           <view class='act-overlay-close iconfont'></view>
+        </view>
+      </view>
+
+      <view class='dialog-main'>
+        <view hidden='{{dialogTitle != "修改头像"}}'>
+          <view class='dialog-image'>
+            <image src='{{updataValue}}' mode='aspectFill' style='width: 100%;height: 100%'></image>
+            <progress percent="{{progressValue}}" stroke-width="3" hidden='{{progressShow}}'/>
+          </view>
+          <view class='dialog-updata-image' bindtap='chooseImage'>上传头像</view>
+        </view>
+        <view hidden='{{dialogTitle == "修改头像"}}'>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__bd dialog-setname">
+                <input class="weui-input" placeholder="请输入" bindinput='updataValueChange' value='{{updataValue}}' />
+                <icon bindtap='clearUpdataValue' hidden='{{updataValue == ""}}' type="clear" size="14"></icon>
+              </view>
+            </view>
+        </view>
+        </view>
+        
+      </view>
+
+      <view bindtap='dialogOk' class='dialog-ok'>保存</view>
+    </view>
+  </view>
+</view>

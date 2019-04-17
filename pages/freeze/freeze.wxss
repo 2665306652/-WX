@@ -1,0 +1,16 @@
+.freeze-main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 66rpx;
+}
+.freeze-icon {
+  font-size: 166rpx;
+}
+.freeze-text {
+  font-size: 32rpx;
+}
+.freeze-icon::before {
+  content: '\e646'
+}

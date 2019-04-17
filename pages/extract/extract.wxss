@@ -1,0 +1,17 @@
+.extract {
+  padding: 35rpx 30rpx;
+}
+.extract-box {
+  background-color: white;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.extract-title {
+  height: 164rpx;
+  background-color: #fbfbfb;
+}
+.extract-bank {
+  display: flex;
+  justify-content: space-between;
+
+}

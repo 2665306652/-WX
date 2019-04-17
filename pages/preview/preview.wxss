@@ -1,0 +1,22 @@
+/* pages/preview/preview.wxss */
+.preview{
+    font-size: 32rpx;
+}
+.preview .weui-form-preview__value_in-hd,.preview .weui-form-preview__labe{
+    font-size: 32rpx;
+}
+.preview  .weui-form-preview__bd {
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+
+}
+.preview  .weui-form-preview__bd .weui-form-preview__item{
+    padding: 0 15px;
+}
+.preview  .weui-form-preview__bd .weui-form-preview__item:first-child{
+    padding-top: 10px;
+}
+.preview  .weui-form-preview__bd .weui-form-preview__item:last-child{
+    padding-bottom: 10px;
+}

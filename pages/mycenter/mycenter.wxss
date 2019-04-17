@@ -1,0 +1,86 @@
+.mycenter-box {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding-top: 11rpx;
+  color: #353535;
+  overflow: hidden;
+}
+.mycenter-me {
+  height: 160rpx;
+  display: flex;
+  background-color: white;
+  align-items: center;
+  margin-bottom: 11rpx;
+  justify-content: space-between;
+}
+.mycenter-me-left {
+  display: flex;
+}
+.mycenter-photo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  background-color: orange;
+}
+.mycenter-id {
+  font-size: 36rpx;
+  color: #333333;
+}
+.mycenter-phone {
+  font-size: 24rpx;
+  color: #333333;
+}
+.mycenter-menu {
+  background-color: white;
+  height: 110rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rpx;
+  justify-content: space-between;
+}
+.mycenter-collect {
+  margin-left: 40rpx;
+  color: #999;
+  margin-right: 30rpx;
+}
+.mycenter-arrow {
+  margin-right: 30rpx;
+  font-size: 50rpx;
+  color: #999;
+}
+.mycenter-menu-text {
+  font-size: 32rpx;
+}
+.arrow::before {
+  content: "\e6ba";
+}
+.star::before {
+  content: "\e610";
+}
+.help::before {
+  content: "\e645";
+}
+.back::before {
+  content: "\e612";
+}
+.manage::before {
+  content: "\e696";
+}
+.sell::before {
+  content: "\e601";
+}
+.asset::before {
+  content: "\e63a";
+}
+.backee::before {
+  content: "\e60f";
+}
+.uploadItem::before{
+  content: '\e668'
+}
+.back{
+  margin-right: 26rpx;
+}

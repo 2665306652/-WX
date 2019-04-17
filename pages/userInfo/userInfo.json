@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "bottomNav": "/component/bottomNav/bottomNav",
+    "overlay": "/component/overlay/overlay"
+
+  }
+
+}

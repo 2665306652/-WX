@@ -1,0 +1,188 @@
+<!-- pages/orderlist/orderlist.wxml -->
+<view class="wrap-order">
+    <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="onInputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="onClearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="onShowInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索</view>
+            </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn regulate-search-btn" hidden="{{!inputShowed}}" bindtap="onHideInput">
+            取消
+        </view>
+    </view>
+    <view class="wrap-order-nav">
+        <block wx:for="{{tabs}}" wx:key="{{index}}">
+            <view bindtap="onTapChange" data-index="{{index}}" class="order-nav-item {{activeIndex == index ? 'active' : ''}}">
+                {{item}}
+            </view>
+        </block>
+    </view>
+    <view class="wrap-order-list {{orderList.length ? '' : 'list-empty iconfont'}}">
+        <block wx:for="{{orderList}}" wx:key="{{index}}">
+            <view class="order-list-item">
+                <view class="list-item-head">
+                    <view class="item-head-shop">
+                        <!-- <view class="head-shop-name">{{item.number}}</view> -->
+                        <!-- <view class="head-shop-icon iconfont"></view> -->
+                        <image src="{{item.userimg}}" class="head-shop-logo" />
+                        <view class="head-shop-name">{{item.username}}</view>
+                        <view class="head-shop-icon iconfont"></view>
+                    </view>
+                    <view class="list-item-status">{{tabs[activeIndex]}}</view>
+                </view>
+                <navigator url="/pages/orderDetails/orderDetails?id={{item.id}}" class="list-item-body">
+                    <image class="item-body-img" src="{{item.productmap}}" />
+                    <view class="item-body-box">
+                        <view class="body-box-top">
+                            <view class="item-body-text">
+                                <view class="body-text-title">{{item.productname}}</view>
+                                <view class="body-text-des">
+                                  <text class="body-text-des">{{item.addressinfo[0].userName}}
+                                  {{item.addressinfo[0].userPhone}}
+                                  收货地址:{{item.addressinfo[0].userAddress}}
+                                  </text>
+                                </view>
+                            </view>
+                            <view class="item-body-price">
+                                <view class="body-price-money">￥{{item.unitprice}}</view>
+                                <view class="body-price-num">x{{item.quantity}}</view>
+                            </view>
+                        </view>
+                        <view class="list-item-sum">已付：￥{{item.totalprice}}</view>
+                    </view>
+                </navigator>
+                <!-- <view class="list-item-body list-item-buyer">
+                    <image class="item-body-img" src="{{item.buyerPhoto}}" />
+                    <view class="item-body-text">
+                        <view class="body-text-title">{{item.buyerName}}</view>
+                        <view class="body-text-des">{{item.buyerHouse}}</view>
+                    </view>
+                    <view class="item-body-price">
+                        <view class="body-price-money">￥{{item.price}}</view>
+                        <view class="body-price-num">x{{item.num}}</view>
+                    </view> 
+                </view> -->
+                <view class="list-item-footer">
+                    <block wx:if="{{activeIndex == 0}}">
+                        <view class="button-default" bindtap="onSeedGoodsShow" data-item="{{item}}">
+                            确认配送
+                        </view>
+                    </block>
+                    <block wx:if="{{activeIndex == 1}}">
+                        <view class="button-default" bindtap="onTakeGoodsShow" data-item="{{item}}">确认收货</view>
+                    </block>
+                    <block wx:else>
+                        <!-- <button class="weui-btn mini-btn" type="default" size="mini">已配送</button> -->
+                    </block>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+<overlay id="J_details_seedGoods" class="details-seedGoods" customTitle="确认配送" sureButton="确认" cancelButton="取消" bind:sure="onSeedGoodsSure">
+    <view class="details-seedGoods-main" slot="custom-content">
+        <view class="seedGoods-main">
+
+            <view class="list-item">
+                <view class="item-title">商品名称</view>
+                <view class="item-main">{{goods.productname}}</view>
+            </view>
+            <view class="list-item">
+                <view class="item-title">商品价格</view>
+                <view class="item-main">￥{{goods.unitprice}}</view>
+            </view>
+            <view class="list-item">
+                <view class="item-title">商品数量</view>
+                <view class="item-main">{{goods.quantity}}</view>
+            </view>
+            <view class="list-item">
+                <view class="item-title">实付金额</view>
+                <view class="item-main">{{goods.totalprice}}</view>
+            </view>
+            <view class="list-item">
+                <view class="item-title">收货人</view>
+                <view class="item-main">{{goods.addressinfo[0].userName}}</view>
+            </view>
+            <view class="list-item">
+                <view class="item-title">买家手机号</view>
+                <view class="item-main">{{goods.addressinfo[0].userPhone}}</view>
+            </view>
+             <view class="list-item">
+                <view class="item-title">买家地址</view>
+                <view class="item-main">{{goods.addressinfo[0].userAddress}}</view>
+            </view>
+
+            <!-- <view class="list-item-body">
+                <image class="item-body-img" src="{{goods.pic}}" />
+                <view class="item-body-text">
+                    <view class="body-text-title">{{goods.title}}</view>
+                    <view class="body-text-des">{{goods.description}}</view>
+                </view>
+                <view class="item-body-price">
+                    <view class="body-price-money">￥{{goods.price}}</view>
+                    <view class="body-price-num">x{{goods.amount}}</view>
+                </view>
+            </view>
+            <view class="list-item-body list-item-buyer">
+                <image class="item-body-img" src="{{goods.buyerPhoto}}" />
+                <view class="item-body-text">
+                    <view class="body-text-title">{{goods.buyerName}}</view>
+                    <view class="body-text-des">{{goods.buyerHouse}}</view>
+                </view>
+            </view> -->
+        </view>
+    </view>
+</overlay>
+
+<overlay
+    id="J_details_takeGoods"
+    class="details-takeGoods"
+    customTitle="请输入校验码"
+    customHeight="22%"
+    sureButton="确认" 
+    cancelButton="取消" 
+    bind:sure="onTakeGoodsSure"
+    bind:cancel="onTakeGoodsHide"
+>
+    <view class="details-takeGoods-main" slot="custom-content">
+        <!-- <view class="takeGoods-title">请输入效验码：</view> -->
+
+        <!-- <view class="takeGoods-mains">
+            <view class="main-show" bindtap="onTakeInputShow">
+                <view class="show-item">{{hiddenInputValue[0]}}</view>
+                <view class="show-item">{{hiddenInputValue[1]}}</view>
+                <view class="show-item">{{hiddenInputValue[2]}}</view>
+                <view class="show-item">{{hiddenInputValue[3]}}</view>
+                <view class="show-item">{{hiddenInputValue[4]}}</view>
+                <view class="show-item">{{hiddenInputValue[5]}}</view>
+            </view>
+            <input maxlength="6" focus="{{takeInputShow}}" bindinput="onHiddenInputChange" type="number" name="" id="" class="main-input" />
+
+
+        </view> -->
+
+
+        <view class="takeGoods-main">
+            <input type="number" bindinput='onInputChange' data-index='0' focus="{{inputIndex == 0 ? true : false}}" maxlength="1" value="{{inputValue[0]}}" name="" id="" class="takeGoods-input" />
+            <input type="number" bindinput='onInputChange' data-index='1' focus="{{inputIndex == 1 ? true : false}}" maxlength="1" value="{{inputValue[1]}}" name="" id="" class="takeGoods-input" />
+            <input type="number" bindinput='onInputChange' data-index='2' focus="{{inputIndex == 2 ? true : false}}" maxlength="1" value="{{inputValue[2]}}" name="" id="" class="takeGoods-input" />
+            <input type="number" bindinput='onInputChange' data-index='3' focus="{{inputIndex == 3 ? true : false}}" maxlength="1" value="{{inputValue[3]}}" name="" id="" class="takeGoods-input" />
+            <input type="number" bindinput='onInputChange' data-index='4' focus="{{inputIndex == 4 ? true : false}}" maxlength="1" value="{{inputValue[4]}}" name="" id="" class="takeGoods-input" />
+            <input type="number" bindinput='onInputChange' data-index='5' focus="{{inputIndex == 5 ? true : false}}" maxlength="1" value="{{inputValue[5]}}" name="" id="" class="takeGoods-input" />
+        </view>
+
+    </view>
+
+
+
+</overlay>
+
+<bottomNav></bottomNav>

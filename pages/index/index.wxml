@@ -1,0 +1,95 @@
+<!-- index.wxml -->
+<view class="container mui-act" hover-class="none" hover-stop-propagation="false">
+  <view class="act-banner" hover-class="none" hover-stop-propagation="false">
+    <image src="{{banner.pic}}" class="banner-pic" />
+  </view>
+  <view class="act-nav">
+    <block wx:for="{{navList}}" wx:key="{{index}}">
+      <block wx:if="{{items.communityname}}">
+         <view bindtap="onNavChange" data-index="{{index}}" class="nav-item {{index === navIndex ? 'item-active' : ''}}">
+        {{item.communityname}}
+      </view>
+      </block>
+    </block>
+  </view>
+  
+  <swiper style="height:{{itemList[navIndex].length * 330 + 80}}rpx" class="act-swiper" bindchange="onListChange" current="{{navIndex}}">
+    <block wx:for="{{navList}}" wx:key="{{index}}" wx:for-index="bindex">
+      <swiper-item  >
+        <view class="act-list {{itemList[bindex].length ? '' : 'list-empty iconfont'}}" >
+          <block wx:for="{{itemList[bindex]}}" wx:key="{{index}}">
+            <navigator class="list-item" target="" url="/pages/details/details?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+              <image class="item-pic" src="{{item.productmap}}" lazy-load="true" binderror="" bindload="" />
+              <view class="item-info" >
+                <view class="info-title" >
+                  {{item.productname}}
+                </view>
+                <view class="info-price">
+                  ￥{{item.unitprice}}
+                </view>
+                <view class="info-seller" >
+                  <view class="seller-name">仅剩:{{item.balance}}{{item.unit}}</view>
+                </view>
+                <view class="info-seller" >
+                  <view class="seller-name">{{item.names}}</view>
+                  <view class="seller-house">{{item.addressinfo}}</view>
+                </view>
+                <view class="info-trust">
+                  <view class="trust-number">卖家信任值:{{item.usetrust}}</view>
+                  <view class="details-seller-link ">想买</view>
+                </view>
+              </view>
+            </navigator>
+          </block>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+
+
+
+
+
+
+
+
+  <!-- <view class="act-list" hover-class="none" hover-stop-propagation="false">
+    <block wx:for="{{itemList}}" wx:key="{{index}}">
+      <navigator class="list-item" target="" url="/pages/details/details?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+        <image class="item-pic" src="{{item.pic}}" lazy-load="true" binderror="" bindload="" />
+        <view class="item-info" hover-class="none" hover-stop-propagation="false">
+          <view class="info-title" hover-class="none" hover-stop-propagation="false">
+            {{item.title}}
+          </view>
+          <view class="info-seller" hover-class="none" hover-stop-propagation="false">
+            <view class="seller-name">{{item.seller}}</view>
+            <view class="seller-house">{{item.sellerHouse}}</view>
+          </view>
+          <view class="info-price">
+            {{item.price}}
+            <view class="price-unit">{{item.priceUnit}}</view>
+          </view>
+          <view class="info-trust">
+            <view class="trust-auth iconfont {{item.auth ? 'auth' : ''}}"></view>
+            <view class="trust-number">{{item.trust}}</view>
+          </view>
+        </view>
+      </navigator>
+    </block>
+  </view> -->
+</view>
+<bottomNav checkedIndex="0" id="bottomNav"></bottomNav>
+<!-- <view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> -->

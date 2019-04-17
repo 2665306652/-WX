@@ -1,0 +1,43 @@
+<view class="management">
+  <view class='mycenter-me'>
+    <view class='mycenter-me-left'>
+      <image class="mycenter-photo" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view class='mycenter-name'>
+        <text class='mycenter-id'>{{userInfo.nickName}}
+        <!-- 这里这个换行不能去掉 -->
+        </text>
+        <text class='mycenter-phone'>{{userInfo.phone}}</text>
+      </view>
+    </view>
+    <!-- <text class='iconfont arrow mycenter-arrow'></text> -->
+  </view>
+  <view class="weui-flex">
+      <view class="weui-flex__item"><view class="mag-item">总资产：<view class="con-item-price">￥4545454545元</view></view></view>
+      <view class="weui-flex__item"><view class="mag-item">已提现：<view class="con-item-price">￥4545454545元</view></view></view>
+  </view>
+  <view class="weui-flex">
+      <view class="weui-flex__item"><view class="mag-item">处理中：<view class="con-item-price">￥4545454545元</view></view></view>
+      <view class="weui-flex__item"><view class="mag-item">可提现：<view class="con-item-price">￥4545454545元</view></view></view>
+  </view>
+  <view class="page__bd page__bd_spacing management-btn">
+    <button class="weui-btn" type="primary" bindtap="goPreview">查看明细</button>
+    <button class="weui-btn" type="primary" bindtap="goCash">提现</button>
+  </view>
+</view>
+<overlay id="J_cash" customTitle="提现">
+  <view class="cash-con" slot="custom-content">
+    <view class="cash-con-head">
+      <view class="con-head-item">提现到微信</view> 
+      <view class="con-head-item">15868375835</view>
+      <view class="con-head-item iconfont"></view>
+    </view>
+    <view class="cash-con-body">
+      <view class="con-body-tit">提现金额</view>
+      <view class="con-body-money">
+        <view class="body-money-unit">￥</view>
+        <input class="weui-input" bindinput="cashValueChange" placeholder="" />
+      </view>
+    </view>
+    <view class="cash-con-sum"><view >可提取￥50089</view><view class="con-sum-all">全部提取</view></view>
+  </view>
+</overlay>

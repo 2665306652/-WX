@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/camera/camera",
+    "pages/freeze/freeze",
+    "pages/orderList/orderList",
+    "pages/details/details",
+    "pages/userInfo/userInfo",
+    "pages/uploadidcard/uploadidcard",
+    "pages/information/information",
+    "pages/management/management",
+    "pages/preview/preview",
+    "pages/mycenter/mycenter",
+    "pages/village/village",
+    "pages/editprofile/editprofile",
+    "pages/salesOrder/salesOrder",
+    "pages/orderDetails/orderDetails",
+    "pages/regulate/regulate",
+    "pages/msgsuccess/msgsuccess",
+    "pages/logs/logs",
+    "pages/authorize/authorize",
+    "pages/uploadcargo/uploadcargo",
+    "pages/editcargo/editcargo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "有邻家",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#999",
+    "enablePullDownRefresh": true
+  }
+}

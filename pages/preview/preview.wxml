@@ -1,0 +1,48 @@
+<view class='preview' >
+  <view class="page__bd" style='padding-top: 30rpx;' >
+  <block wx:for="{{dataSource}}" wx:key="{{index}}">
+    <view class="weui-form-preview" style='margin-bottom: 30rpx;' bindtap="itemToggle" data-status="{{item.hidden != null ? item.hidden : 'false'}}"  data-index="{{index}}">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">金额</view>
+          <view 
+            class="weui-form-preview__value_in-hd"
+            style="{{ item.type == '收入' && 'color: #3cc51f'}}"
+          >{{item.type == "支出" ? "-" : "+"}} {{item.sum}}
+          </view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd j_preDetail" hidden="{{item.hidden}}" animation="{{currentIndex == index ? animation : null}}"  data-index="{{index}}">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">状态</view>
+          <view class="weui-form-preview__value">{{item.status == 0 ? '处理中' : '已提现'}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">类型</view>
+          <view class="weui-form-preview__value">{{item.type}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">时间</view>
+          <view class="weui-form-preview__value">{{item.time}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">交易单号</view>
+          <view class="weui-form-preview__value">{{item.numbers}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">备注</view>
+          <view class="weui-form-preview__value">{{item.notes}}</view>
+        </view>
+      </view>
+      <!-- <view class="weui-form-preview__ft">
+        <navigator 
+          url="" 
+          class="weui-form-preview__btn weui-form-preview__btn_primary" 
+          hover-class="weui-form-preview__btn_active"
+        >操作
+        </navigator>
+      </view> -->
+    </view>
+    </block>
+  </view>
+</view>

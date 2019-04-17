@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "填写资料",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "villageSearch": "/component/villageSearch/villageSearch",
+    "overlay": "/component/overlay/overlay"
+  }
+}

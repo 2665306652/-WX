@@ -1,0 +1,63 @@
+<!--pages/orderDetails/orderDetails.wxml-->
+
+<view class="wrap-detail">
+    <view class="wrap-detail-head">
+        <view class="detail-head-text">{{orderDetail.orderstatus == 1 ? '已付款' : orderDetail.orderstatus == 2 ? '已取消': orderDetail.orderstatus == 3 ? '正在配送中' : orderDetail.orderstatus == 4 ? '待评价' :  orderDetail.orderstatus == 5 ? '已完成' : ''}}</view>
+        <view class="detail-head-img iconfont {{orderDetail.orderstatus == 1 ? 'detail-head-pay' : orderDetail.orderstatus == 2 ? 'detail-head-cancle' : orderDetail.orderstatus == 3 ? 'detail-head-send': orderDetail.orderstatus == 4  || orderDetail.orderstatus == 5 ? 'detail-head-suc' : ''}}"></view>
+    </view>
+    <view class="wrap-detail-addr">
+        <view class="detail-addr-gps send iconfont"></view>
+        <view class="detail-addr-con">
+            <view class="addr-con-name">{{addressSold.businessName}}</view>
+            <view class="addr-con-home">{{addressSold.businessAddress}}</view>
+        </view>
+    </view>
+    <view class="wrap-detail-addr">
+        <view class="detail-addr-gps iconfont"></view>
+        <view class="detail-addr-con">
+            <view class="addr-con-name">{{addressBuy.userName}}  {{addressBuy.userPhone}}</view>
+            <view class="addr-con-home">{{addressBuy.userAddress}}</view>
+        </view>
+    </view>
+    <view class="wrap-order-list">
+        <view class="order-list-item">
+            <view class="list-item-head">
+                <view class="item-head-shop">
+                    <image class="head-shop-logo" src="{{orderDetail.businessimg}}"/>
+                    <view class="head-shop-name">{{orderDetail.businessname}}</view>
+                    <!-- <view class="head-shop-icon iconfont"></view> -->
+                </view>
+                <view class="list-item-status">{{orderDetail.orderstatus == 1 ? '已付款' : orderDetail.orderstatus == 2 ? '已取消': orderDetail.orderstatus == 3 ? '正在配送中' : orderDetail.orderstatus == 4 ? '已收货' : orderDetail.orderstatus == 5 ? '已评价' :''}}</view>
+            </view>
+            <view class="list-item-body">
+                <image class="item-body-img" src="{{orderDetail.productmap}}"/>
+                <view class="item-body-text">
+                    <view class="body-text-title">{{orderDetail.productname}}</view>
+                    <view class="body-text-des">{{orderDetail.description}}</view>
+                </view>
+                <view class="item-body-price">
+                    <view class="body-price-money">￥{{orderDetail.unitprice}}</view>
+                    <view class="body-price-num">x{{orderDetail.quantity}}</view>
+                </view>
+            </view>
+            <view class="list-item-sum">
+                <view class="item-sum-code">收货码：<text class="item-sum-num">{{orderDetail.vxcode}}</text></view>
+                <view class="item-sum-con"> 共 {{orderDetail.quantity}} 件  实付：<text class="item-sum-num">￥{{orderDetail.totalprice}}</text> </view>
+            </view>
+        </view>
+        <view class="order-list-info">
+            <view class="list-info-num">订单编号：{{orderDetail.orderid}}</view>
+            <view class="list-info-num">支付方式：微信钱包</view>
+            <view class="list-info-num">下单时间：{{orderDetail.ordertime}}</view>
+            <view class="list-info-num">发货时间：2018-09-08  18:00:55</view>
+            <view class="list-info-num">成交时间：2018-09-08  18:00:55</view>
+        </view>
+        <view wx:if="{{orderDetail.orderstatus == 4 || orderDetail.orderstatus == 5}}">
+        </view>
+        <view wx:else>
+            <view class="order-list-btns">
+                <view class="button-default" bindtap="openConfirm">确认收货</view>
+            </view>
+        </view>
+    </view>
+</view>

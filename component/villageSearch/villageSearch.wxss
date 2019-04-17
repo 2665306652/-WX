@@ -1,0 +1,36 @@
+/* component/villageSearch/villageSearch.wxss */
+@import '/app.wxss';
+.village-search{
+    width:100%;
+    height: 100%;
+    overflow: hidden;
+    background: #999;
+    position: fixed;
+    left:0;top:2000px;
+    z-index: 99999;
+}
+.village-search .search-result{
+    width:100%;
+    height: calc(100% - 90rpx);
+    background: #fff;
+    overflow-y: scroll;
+}
+.village-search .search-result .res-item{
+    line-height: 60rpx;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #e5e5e5;
+    text-indent: 20rpx;
+}
+.village-search .search-result .res-item:last-child{
+    border-bottom: none;
+}
+.village-search .item-add{
+    font-size: 28rpx;
+    color:#888;
+    text-align: center;
+}
+.village-search .res-item .depth-search{
+    display: inline;
+    text-decoration: underline;
+    color:#09bb07;
+} 

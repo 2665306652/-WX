@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "overlay" : "/component/overlay/overlay"
+  },
+  "navigationBarTitleText": "资产管理"
+}

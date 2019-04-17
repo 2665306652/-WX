@@ -1,0 +1,392 @@
+/* pages/userInfo/userInfo.wxss */
+.mui-act-userInfo{
+    width:100%;
+    overflow: hidden;
+   
+}
+
+
+.mui-act-userInfo .list-item{
+    width:calc(100% - 20rpx);
+    overflow: hidden;
+    background: #fff;
+    font-size: 32rpx;
+    padding:20rpx 0;
+    margin:20rpx auto;
+    border-radius: 20rpx;
+    text-indent: 20rpx;
+}
+.mui-act-userInfo .list-photo{
+    padding-left:3%;
+    padding-right:3%;
+    margin-top:0;
+    border-radius: 0;
+    display: flex;
+    font-size: 36rpx;
+    border-top:1rpx solid #e5e5e5;
+}
+.mui-act-userInfo .list-photo .item-photo{
+    width:120rpx;
+    height:120rpx;
+    border-radius: 120rpx;
+}
+.mui-act-userInfo .list-photo .item-name{
+    line-height: 50rpx;
+    /* margin-left:20rpx; */
+}
+.mui-act-userInfo .list-photo .main-nickName{
+    margin-top:20rpx;
+}
+.mui-act-userInfo .list-photo .main-trust{
+    font-size: 28rpx;
+    color:#888;
+}
+
+.mui-act-userInfo .list-item .item-title{
+    width:100%;
+    line-height: 60rpx;
+    border-bottom: 1rpx solid #e5e5e5;
+    font-size: 32rpx;
+    /* color:#e94f4f; */
+    font-weight: bold;
+}
+.mui-act-userInfo .list-item .item-main{
+    width:calc(100% - 80rpx);
+    /* overflow: hidden; */
+    display: flex;
+    justify-content:space-between;
+    text-indent: 0;
+    padding:10rpx 40rpx 10rpx 0;
+    margin:0 auto;
+    /* margin-left:20rpx; */
+    position: relative;
+    min-height: 50rpx;
+    line-height: 50rpx;
+    border-bottom: 1rpx #e5e5e5 solid;
+    font-size: 28rpx;
+
+}
+.mui-act-userInfo .list-item .item-main:last-child{
+    border-bottom:none;
+}
+.mui-act-userInfo .list-item .item-main::after{
+    content: '\e6ba';
+    line-height: 60rpx;
+    position: absolute;
+    right:0rpx;
+    top:50%;
+    transform: translateY(-50%);
+    color:#888;
+
+
+}
+.mui-act-userInfo .list-item .main-text{
+    color:#888;
+}
+.mui-act-userInfo .list-item .main-auth{
+    border-radius: 20rpx;
+    border:1rpx solid #888;
+    color:#888;
+    padding:5rpx 20rpx;
+    font-size: 24rpx;
+    height:30rpx;
+    line-height: 30rpx;
+    margin-top:8rpx;
+}
+.mui-act-userInfo .list-item .auth-true{
+    border-color:#00d819;
+    color:#00d819;
+}
+
+
+/* 
+.mui-act-userInfo .list-item{
+    width:92%;
+    min-height: 60rpx;
+    line-height: 60rpx;
+    margin:0 auto;
+    padding:10rpx 0;
+    color:#353535;
+    font-size: 32rpx;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px #e5e5e5 solid;
+}
+.mui-act-userInfo .list-item:last-child{
+    border:none;
+}
+.mui-act-userInfo .list-item::after{
+    content: '\e6ba';
+    position: absolute;
+    right:0rpx;
+    top:50%;
+    transform: translateY(-50%);
+    color:#888;
+
+}
+.mui-act-userInfo .list-item .item-main{
+    margin-right: 30rpx;
+    color:#888;
+}
+.mui-act-userInfo .list-photo{
+    height: 120rpx;
+    overflow: hidden;
+    padding-top:20rpx;
+    padding-bottom: 20rpx;
+}
+.mui-act-userInfo .list-photo .item-title{
+    line-height: 120rpx;
+}
+.mui-act-userInfo .list-photo .item-photo{
+    width:120rpx;
+    height:120rpx;
+    border-radius: 120rpx;
+    background: #888;
+}
+
+
+.address-main .editAddress-list .list-items{
+    border:none;
+    height: 110rpx;
+    overflow: hidden;
+    margin-top:20rpx;
+}
+
+.address-main .list-items .item-photo{
+    width:50rpx;
+    height:50rpx;
+    line-height: 50rpx;
+    border-radius: 100rpx;
+    background: #353535;
+    color:#fff;
+    text-align: center;
+    margin-top:25rpx;
+    position: relative;
+    margin-left:20rpx;
+
+}
+.address-main .list-items .item-address{
+    width:500rpx;
+    margin:0 20rpx;
+}
+.address-main .list-items .address-info{
+    display: flex;
+    line-height: 45rpx;
+
+    
+}
+.address-main .address-info .info-name{
+    font-size: 30rpx;
+}
+.address-main .address-info .info-phone{
+    font-size: 24rpx;
+    color:#888;
+    padding-left:30rpx;
+}
+.address-main .item-address .address-details{
+    line-height: 33rpx;
+    font-size: 28rpx;
+}
+.address-main .list-items .item-del{
+    height: 50rpx;
+    line-height: 50rpx;
+    color: #888;
+    text-align: center;
+    border-left: 1rpx solid #e5e5e5;
+    padding-left:20rpx;
+    margin-top:30rpx;
+}
+
+.address-main{
+    padding-left:30rpx;
+}
+.address-main .list-items{
+    display: flex;
+    margin:0rpx 0 0rpx 30rpx;
+    padding:10rpx 0;
+    position: relative;
+
+}
+.address-main .list-items:last-child{
+    border-bottom:none;
+}
+.address-main .list-items .item-left{
+    width:1rpx;
+    height:128rpx;
+    background: #e5e5e5;
+    position: absolute;
+    left:0;top:0;
+}
+.address-main .list-items:last-child .item-left{
+    height:60rpx;
+}
+.address-main .list-items .item-photo::before{
+    content:'1';
+    width:19rpx;
+    height:2rpx;
+    background: #e5e5e5;
+    position: absolute;
+    left:-19rpx;
+    top:50%;
+}
+.address-main .item-del::after{
+    content : '\e7fc';
+    color:#e94f4f;
+}
+.address-main .list-add{
+    height:100rpx;
+    line-height: 100rpx;
+}
+.address-main .list-add .item-photo{
+    background: #e94f4f;
+}
+.address-main .list-add .add-item{
+    font-size:30rpx;
+    padding-left:20rpx;
+}
+
+*/
+
+
+.userInfo-phone {
+    background: red;
+}
+.userInfo-phone .act-overlay-main{
+    height: 36%;
+}
+
+.userInfo-phone .editPhone-list{
+    width:90%;
+    overflow: hidden;
+    margin:20rpx auto;
+}
+.userInfo-phone .editPhone-list .list-item,.userInfo-address .editAddress-list .list-items{
+    display: flex;
+    line-height: 80rpx;
+    color:#353535;
+    font-size: 28rpx;
+    margin:0 auto;
+    border-bottom: 1rpx solid #e5e5e5;
+}
+
+.userInfo-phone .list-item input,.editAddress-list .list-item input{
+    flex: 1;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.userInfo-phone .list-item .item-getCode{
+    min-width:200rpx;
+    border-left: 1rpx solid #e5e5e5;
+    color:#e94f4f;
+    padding-left:10rpx;
+    text-align: center;
+}
+.userInfo-phone .list-item .item-gray{
+    color:#888;
+}
+.userInfo-phone .list-item .item-red{
+    color:#e94f4f;
+}
+.userInfo-phone .overlay-sure,.userInfo-address .overlay-sure{
+    width: 90%;
+    margin:40rpx auto 20rpx auto;
+    line-height: 80rpx;
+    height: 80rpx;
+}
+
+/*
+.editAddress-list .list-item{
+    width:100%;
+    margin:20rpx auto;
+    font-size:28rpx;
+    display: flex;
+    border-bottom:1rpx solid #e5e5e5;
+    line-height: 45rpx;
+}
+.editAddress-list .list-item .item-title{
+    line-height: 60rpx;
+    color: #888;
+}
+.editAddress-list .list-item input{
+    height: 45rpx;
+    line-height: 45rpx;
+    color: #353535;
+}
+.editAddress-list .item-main{
+    display: flex;
+    line-height: 60rpx;
+}
+.editAddress-list .item-main .main-item{
+    margin:0 10rpx;
+}
+.editAddress-list .item-main .main-detaile{
+    display: block;
+}
+.userInfo-address .overlay-sure{
+    margin-top:0rpx;
+}
+
+
+.enterfirst-cascading {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 9999;
+  }
+  .enterfirst-cascading-content {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 600rpx;
+    box-sizing: border-box;
+    background-color: #e5e5e5
+  }
+  .enterfirst-cascading-main {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .enterfirst-cascading-content .content-button{
+      display: flex;
+      justify-content:space-between;
+      font-size: 32rpx;
+  }
+  .enterfirst-cascading-content .content-button view{
+      padding:10rpx 20rpx;
+  }
+  .enterfirst-cascading-content .content-button .button-sure{
+      color: #e94f4f;
+  }*/
+  .village-search{
+      width:100%;
+      height: 100%;
+      overflow: hidden;
+      background: #999;
+      position: fixed;
+      left:0;top:2000px;
+      z-index: 99999;
+  }
+  .village-search .search-result{
+      width:100%;
+      height: calc(100% - 90rpx);
+      background: #fff;
+      overflow-y: scroll;
+  }
+  .village-search .search-result .res-item{
+      line-height: 55rpx;
+      font-size: 28rpx;
+      border-bottom: 1rpx solid #e5e5e5;
+      text-indent: 20rpx;
+  }
+  .village-search .search-result .res-item:last-child{
+      border-bottom: none;
+  }
+  .village-search .res-item navigator{
+      display: inline;
+  } 

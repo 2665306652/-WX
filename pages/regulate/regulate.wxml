@@ -1,0 +1,104 @@
+<view class="regulate">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input 
+          type="text" 
+          class="weui-search-bar__input" 
+          placeholder="搜索" 
+          value="{{inputVal}}" 
+          focus="{{inputShowed}}" 
+          bindinput="onInputTyping" 
+        />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="onClearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="onShowInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索</view>
+    </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn regulate-search-btn" hidden="{{!inputShowed}}" bindtap="onHideInput">取消</view>
+  </view>
+
+  <view class="regulate-nav">
+    <view class="{{nav == 1 ? 'active' : ''}}" data-nav='1' bindtap='onNavClick'>待审核</view>
+    <view class="{{nav == 2 ? 'active' : ''}}" data-nav='2' bindtap='onNavClick'>在线商品</view>
+    <view class="{{nav == 3 ? 'active' : ''}}" data-nav='3' bindtap='onNavClick'>停售商品</view>
+  </view>
+
+  <scroll-view scroll-y class="regulate-list {{listData.length ? '' : 'list-empty iconfont'}}">
+    <block wx:for="{{listData}}" wx:key="{{index}}">
+      <view class='list-box'>
+        <view class="list-title">
+          <view class='list-titleValue'>{{item.productname}}</view>
+          <view class='iconfont arrow mycenter-arrow'></view>
+        </view>
+        <view class='list-main'>
+          <image class='list-image' src='{{item.productmap}}'></image>
+          <view class='list-details'>
+            <view>编号：<text>{{item.id}}</text></view>
+            <view>库存：<text>{{item.soldnumber}}/{{item.balance}}</text></view>
+            <view>价格：<text>{{item.unitprice}}元/{{item.unit}}</text></view>
+            <!-- <view>单位：<text></text></view> -->
+            <view>品质：<text>{{item.type == 1 ? '全新' : '二手'}}</text></view>
+          </view>
+        </view>
+        <view class='list-operation'>
+          <view class="list-operation-type">状态:{{nav == 1 ? '审核中' : nav == 2 ? '在线' : '已停售'}}</view>
+          <view class='list-operation-btn'>
+            <block wx:if="{{nav == 2}}">
+              <view class="button-default button-edit" bindtap='onModify' data-item="{{item}}">修改</view>
+              <view class="button-default" bindtap='onHaltSales' data-item="{{item}}">停售</view>
+            </block>
+            <block wx:if="{{nav == 3}}">
+              <view class="button-default button-edit" bindtap='onModifyProperty' data-item="{{item}}">修改属性</view>
+              <view class="button-default" bindtap='onPutaway' data-item="{{item}}">上架审核</view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <!-- <overlay id="J_details_updataGoods" class="details-seedGoods" customTitle="修改商品属性" sureButton="确认" cancelButton="取消" bind:sure="onSeedGoodsSure">
+    <view class='dialog-box' slot="custom-content">
+       <view class="weui-cells weui-cells_after-title" style='margin-bottom:40rpx;'>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">商品名称</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入商品名称" value='{{name}}'/>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">单位</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入商品单位" value='{{units}}'/>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">库存</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value='{{surplus}}' placeholder="请输入商品库存" type='number'/>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">单价</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" value='{{sum}}' placeholder="请输入价格" type='number'/>
+            </view>
+          </view>
+        </view>
+    </view>
+  </overlay> -->
+</view>

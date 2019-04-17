@@ -1,0 +1,87 @@
+<!-- pages/camera/camera.wxml -->
+<view class='attestation'>
+  <view class='attestation-nav'>
+    <view class='attestation-fash {{navStyle ? "nav-style" : ""}}'>人脸验证</view>
+    <view class='attestation-idcard {{navStyle ? "" : "nav-style"}}'>确认证件</view>
+  </view>
+  <!-- 身份证识别 -->
+  <view wx:if="{{navStyle}}" class='attestation-idcard-box'>
+    <view class='uploadidcard-basics'>请上传身份证正面照：</view>
+    <view class='uploadidcard-photo'>
+      <view class="weui-uploader__input-box uploadidcard-photo-box" hidden="{{front}}">
+        <view class="weui-uploader__input" data-item='front' bindtap="onChooseImage"></view>
+      </view>
+      <view class='ploadidcard-image' hidden="{{!front}}" >
+        <image 
+          mode='aspectFill' 
+          style='width:100%;display:block;'
+          src='{{front}}' 
+          data-item='front'
+          bindtap="onChooseImage"
+        />
+        <text style='font-size:20rpx'>点击图片可更换</text>
+      </view>
+    </view>
+
+    <view class='uploadidcard-basics'>请上传身份证反面照：</view>
+    <view class='uploadidcard-photo'>
+      <view class="weui-uploader__input-box uploadidcard-photo-box" hidden="{{side}}">
+        <view class="weui-uploader__input" data-item='side' bindtap="onChooseImage"></view>
+      </view>
+      <view class='ploadidcard-image' hidden="{{!side}}" >
+        <image 
+          mode='aspectFill' 
+          style='width:100%;display:block;'
+          src='{{side}}' 
+          data-item='side'
+          bindtap="onChooseImage"
+        />
+        <text style='font-size:20rpx'>点击图片可更换</text>
+      </view>
+    </view>
+
+    <view class='attestation-basics-box' wx:if="{{reconfirmation == 2}}">
+      <view class='attestation-basics'>请确认下列信息与你证件上的一致：</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">中文姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="您的姓名" bindinput='onNameChange' />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">证件号码</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="您的身份证号" bindinput='onCardChange' />
+          </view>
+        </view>
+      </view>
+    </view>
+    <button 
+      type="warn" 
+      class='attestation-idcard-btn' 
+      bindtap='onSure' 
+      style='{{reconfirmation == 2 ? "" : "background-color: #eee" }}'
+    >确认
+    </button>
+    <button type="warn" class='attestation-idcard-btn' bindtap='onBack'>上一步</button>
+  </view>
+  <!-- 人脸识别 -->
+  <view class='fash-box' wx:else>
+    <view class='camera-container'>
+      <block wx:if="{{src}}">
+        <image class="camera-box" src="{{src}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+      </block>
+      <block wx:else>
+        <camera class="camera-box" device-position="front" flash="off" binderror="error"></camera>
+      </block>
+    </view>
+    <button type="warn" class='attestation-btn' bindtap='onShoot'>{{shootValue}}</button>
+    <button type="warn" class='attestation-btn' bindtap='onNext'>下一步</button>
+  </view>
+</view>

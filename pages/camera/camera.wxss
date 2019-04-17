@@ -1,0 +1,78 @@
+.attestation-nav {
+  font-size: 28rpx;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  background-color: #3c8efe;
+}
+.nav-style {
+  opacity: .6;
+}
+.attestation-nav view {
+  width: 50%;
+  box-sizing: border-box;
+  padding-left: 10rpx;
+}
+.attestation-fash {
+  border-right: 1px solid white;
+}
+.camera-container {
+  padding-top: 66rpx;
+  display: flex;
+  justify-content: center;
+}
+.camera-box {
+  width: 506rpx;
+  height: 506rpx;
+  border-radius: 50%;
+}
+.attestation-btn {
+  width: 80%;
+  margin: 40rpx auto;
+}
+.attestation-idcard-btn {
+  margin: 40rpx 30rpx;
+}
+
+
+.attestation-idcard-box {
+  padding-bottom: 39rpx;
+}
+.attestation-basics-box {
+  box-sizing: border-box;
+  padding: 30rpx;
+}
+.uploadidcard-basics {
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  padding-top: 20rpx;
+  font-size: 28rpx;
+}
+.uploadidcard-photo {
+  display: flex;
+  justify-content: center;
+}
+.uploadidcard-photo-box {
+  float: none;
+  width: 90%;
+  height: auto;
+  min-height: 366rpx;
+  margin: 0;
+}
+.ploadidcard-image {
+  width: 90%;
+}
+.attestation-basics {
+  padding-top: 66rpx;
+  font-size: 28rpx;
+  color: #353535;
+  padding-bottom: 20rpx;
+}
+.attestation .weui-cells .weui-cell .weui-label {
+  font-size: 28rpx;
+  color: #353535;
+}
+.attestation .weui-cells .weui-cell .weui-input {
+  font-size: 28rpx;
+  color: #888;
+}

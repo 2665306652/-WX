@@ -1,0 +1,29 @@
+<!-- component/overlay/overlay.wxml -->
+<!-- 编辑小区信息 -->
+<view class="mui-act-overlay" hidden="{{!overlayStatus}}">
+    <view class="overlay-mask" bindtap="_hide"></view>
+    <view class="act-overlay-main" animation="{{animation}}" >
+        <view class="act-overlay-close iconfont" bindtap="_hide"></view>
+        <view class="act-main-content" style="height:{{customHeight}}">
+            <view class="main-content-title">{{customTitle}}</view>
+            <view class="main-content">
+                <slot name="custom-content"></slot>
+            </view>
+            <view class="act-overlay-sure">
+                <block wx:if="{{cancelButton && sureButton}}">
+                    <button class="overlay-sure overlay-gary button-short" bindtap="_hide">
+                        {{cancelButton}}
+                    </button>
+                    <button type="warn" class="overlay-sure button-short " bindtap="_sure">
+                        {{sureButton}}
+                    </button>
+                </block>
+                <block wx:else>
+                    <button type="warn" class="overlay-sure button-long" bindtap="_sure">
+                        {{sureButton}}
+                    </button>
+                </block>
+            </view>
+        </view>
+    </view>
+</view>

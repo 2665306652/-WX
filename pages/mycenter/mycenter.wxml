@@ -1,0 +1,93 @@
+<view class='mycenter-box'>
+  <!-- <navigator url="/pages/editprofile/editprofile"> -->
+  <view class='mycenter-me'>
+    <view class='mycenter-me-left'>
+      <image class="mycenter-photo" src="{{userInfo.avatar}}" mode="cover"></image>
+      <view class='mycenter-name'>
+        <text class='mycenter-id'>{{userInfo.nickname}} 
+        <!-- 这里这个换行不能去掉 -->
+        </text>
+        <text class='mycenter-phone'>{{userInfo.phone}}</text>
+      </view>
+    </view>
+    <!-- <text class='iconfont arrow mycenter-arrow'></text> -->
+  </view>
+  <!-- </navigator> -->
+  <navigator url="/pages/userInfo/userInfo">
+    <view class='mycenter-menu' key="menu1">
+      <view>
+        <text class='iconfont star mycenter-collect'></text>
+        <text class='mycenter-menu-text'>个人资料</text>
+      </view>
+      <text class='iconfont arrow mycenter-arrow'></text>
+    </view>
+  </navigator>
+  <navigator url="/pages/orderList/orderList">
+    <view class='mycenter-menu' key="menu2">
+      <view>
+        <text class='iconfont help mycenter-collect'></text>
+        <text class='mycenter-menu-text'>购买订单</text>
+      </view>
+      <text class='iconfont arrow mycenter-arrow'></text>
+    </view>
+  </navigator>
+  <block wx:if="{{userInfo.approvalstatus == 1}}">
+    <navigator url="/pages/uploadidcard/uploadidcard">
+      <view class='mycenter-menu' key="menu3">
+        <view>
+          <text class='iconfont back mycenter-collect'></text>
+          <text class='mycenter-menu-text'>成为卖家</text>
+        </view>
+        <text class='iconfont arrow mycenter-arrow'></text>
+      </view>
+    </navigator>
+  </block>
+  <block wx:if="{{userInfo.approvalstatus == 4}}">
+    <navigator url="/pages/uploadcargo/uploadcargo">
+      <view class='mycenter-menu' key="menu3">
+        <view>
+          <text class='iconfont uploadItem mycenter-collect'></text>
+          <text class='mycenter-menu-text'>上传商品</text>
+        </view>
+        <text class='iconfont arrow mycenter-arrow'></text>
+      </view>
+    </navigator>
+    <navigator url="/pages/regulate/regulate">
+      <view class='mycenter-menu' key="menu3">
+        <view>
+          <text class='iconfont manage mycenter-collect'></text>
+          <text class='mycenter-menu-text'>商品管理</text>
+        </view>
+        <text class='iconfont arrow mycenter-arrow'></text>
+      </view>
+    </navigator>
+    <navigator url="/pages/salesOrder/salesOrder">
+      <view class='mycenter-menu' key="menu3">
+        <view>
+          <text class='iconfont sell mycenter-collect'></text>
+          <text class='mycenter-menu-text'>销售订单</text>
+        </view>
+        <text class='iconfont arrow mycenter-arrow'></text>
+      </view>
+    </navigator>
+  </block>
+  <navigator url="/pages/management/management">
+    <view class='mycenter-menu' key="menu3">
+      <view>
+        <text class='iconfont asset mycenter-collect'></text>
+        <text class='mycenter-menu-text'>资产管理</text>
+      </view>
+      <text class='iconfont arrow mycenter-arrow'></text>
+    </view>
+  </navigator>
+ <!--  <navigator url="/pages//">
+    <view class='mycenter-menu' key="menu3">
+      <view>
+        <text class='iconfont backee mycenter-collect'></text>
+        <text class='mycenter-menu-text'>意见反馈</text>
+      </view>
+      <text class='iconfont arrow mycenter-arrow'></text>
+    </view>
+  </navigator> -->
+  <bottomNav checkedIndex="2" id="bottomNav"></bottomNav>
+</view>

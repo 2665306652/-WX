@@ -1,0 +1,37 @@
+<!--component/villageSearch/villageSearch.wxml-->
+
+<!--小区搜索-->
+<view class="village-search" hidden="{{!villageSearch}}" animation="{{searchAnimation}}">
+    <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}"  bindinput="_inputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="_clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+            <!-- <label class="weui-search-bar__label"  bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索</view>
+            </label> -->
+        </view>
+        <view class="weui-search-bar__cancel-btn" bindtap="_hide">
+            取消
+        </view>
+    </view>
+    <view class="search-result" >
+        <block wx:for="{{searchRes}}" wx:key="{{index}}">
+            <view bindtap="_resultClick" data-item="{{item}}" class="res-item">{{item.province}},{{item.city}},{{item.area}},{{item.communityname}},{{item.detail}}</view>
+            
+        </block>
+        <view class="res-item">
+            <view class="item-add">
+                没有找到所在小区,
+                <view class="depth-search" bindtap="_depthSearch" hover-class="none" hover-stop-propagation="false">
+                    请点此深入查询
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

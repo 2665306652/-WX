@@ -1,0 +1,221 @@
+.enterfirst {
+  background-color: white;
+  height: 100vh;
+  padding-top: 30rpx;
+  box-sizing: border-box;
+  color: #353535;
+  font-size: 28rpx;
+}
+.enterfirst .weui-cells .weui-cell .weui-label {
+  font-size: 28rpx;
+  color: #353535;
+}
+.enterfirst .weui-cells .weui-cell .weui-input {
+  font-size: 28rpx;
+}
+.regulate-dialog .weui-cell .weui-label {
+  font-size: 28rpx;
+  color: #353535;
+}
+.regulate-dialog .weui-cell .weui-input {
+  font-size: 28rpx;
+}
+.uploadidcard-basics {
+  margin-bottom: 20rpx;
+  margin-left: 30rpx;
+  padding-top: 20rpx;
+}
+.enterfirst-list-icon {
+  margin-right: 30rpx;
+  color: #b2b2b2;
+}
+.enterfirst-right-textarea {
+  margin: 0;
+  padding: 0;
+  margin-top: 10rpx;
+  height: 143rpx;
+  width: 100%;
+  line-height: 0;
+  transform: translate(-8rpx)
+}
+.enterfirst-cascading {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, .3)
+}
+.enterfirst-cascading-content {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 600rpx;
+  box-sizing: border-box;
+  background-color: #e5e5e5
+}
+.enterfirst-cascading-main {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.enterfirst-btn {
+  margin: 62rpx 30rpx 0 30rpx;
+}
+.iconfont-next::after {
+  content: "\e6ba";
+}
+.enterfirst-dialog {
+  width: 660rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10rpx;
+  padding-top: 20rpx;
+  overflow: hidden;
+}
+.uploadcargo-describe {
+  border: 1rpx solid #ccc;
+  width: 100%;
+  font-size: 28rpx;
+}
+.uploadcargo-basics {
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+}
+.enterfirst-label-title {
+  flex: 1;
+}
+.act-overlay-close {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1rpx solid #999;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 36rpx;
+}
+.act-overlay-close::after{
+    content:'\e64d';
+}
+.regulate-dialog {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.dialog-box {
+  position: absolute;
+  width: 100vw;
+  height: 90vh;
+  left: 0;
+  bottom: -50vh;
+  background-color: white;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  overflow: hidden;
+}
+.dialog-btn {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  padding: 10rpx 20rpx;
+  margin-bottom: 20rpx;
+}
+.dialog-title {
+  transform: translateX(40rpx);
+}
+.dialog-close {
+  width: 80rpx;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.enterfirst-result {
+  margin-top: 0;
+  height: calc(100% - 180rpx - 112rpx);
+}
+.dialog-setname {
+  display: flex;
+  align-items: center;
+}
+.dialog-setname .weui-input {
+  flex: 1;
+  font-size: 28rpx;
+}
+.dialog-search {
+  font-size: 28rpx;
+  text-align: center;
+  color: #e94f4f;
+  padding: 20rpx 0;
+}
+.dialog-sure {
+  position: absolute;
+  bottom: 20rpx;
+  left: 20rpx;
+  z-index: 666;
+  height: 92rpx;
+  width: calc(100% - 40rpx );
+}
+
+.enterfirst-code {
+  min-width: 222rpx;
+  color: #e94f4f;
+  text-align: center;
+}
+
+.editAddress-input {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.regulate-dialog-result {
+  font-size: 28rpx;
+}
+
+.editAddress-list .list-item{
+    width:100%;
+    margin:20rpx auto;
+    font-size:28rpx;
+    display: flex;
+    border-bottom:1rpx solid #e5e5e5;
+    line-height: 45rpx;
+    padding:0;
+    padding-bottom:20rpx;
+}
+.editAddress-list .list-item::before{
+    border-top:none;
+}
+.editAddress-list .list-item .item-title{
+    line-height: 60rpx;
+    /* color: #888; */
+}
+.editAddress-list .list-item input{
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #353535;
+}
+.editAddress-list .item-main{
+    display: flex;
+    line-height: 60rpx;
+    height: 100%;
+}
+.editAddress-list .item-main .main-item{
+    margin:0 10rpx;
+}
+.editAddress-list .item-main .main-detaile{
+    display: block;
+}
+.editAddress-list .list-item .item-del{
+    color:#e94f4f;
+}

@@ -1,0 +1,191 @@
+<!-- pages/details/details.wxml -->
+<view class="continer mui-details">
+    <view class="details-banner">
+        <image src="{{list.productmap}}" class="details-banner-pic" src="{{list.pic}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        <view class="details-banner-info">
+            <view class="details-info-box">
+                <view class="details-info-price">
+                    {{list.unitprice}}
+                    <text class="price-unit">/{{list.unit}}</text>
+                    <!-- <text class="details-info-oldPrice">￥{{list.oldPrice}}/{{list.unit}}</text> -->
+                </view>
+                <text class="details-info-profit">累计销售{{list.soldnumber}}件</text>
+                <text class="details-info-stock">仅剩{{list.balance}}{{list.unit}}</text>
+            </view>
+            <view class="details-info-type">{{list.type == 1 ? '全新' : '非全新'}}</view>
+        </view>
+    </view>
+    <view class="details-title">
+        <view class="title-text">{{list.productname}}</view>
+        <!-- <button class="title-share iconfont" open-type='share'></button> -->
+    </view>
+    <view class="details-seller" bindtap="onSellerShow">
+        <view class="seller-info">
+            <image src="{{list.sellerinfo.avatar}}" class="details-seller-logo" />
+            <view class="details-seller-info">
+                <view class="seller-info-title">
+                    {{list.sellerinfo.names}}
+                    <view class="trust-info">
+                        信用值:
+                        <text class="trust-number iconfont">{{list.sellerinfo.usetrust}}</text>
+                    </view>
+                </view>
+                <view class="seller-info-house ">{{list.sellerinfo.addressinfo}}</view>
+            </view>
+            <view class="details-seller-link">查看</view>
+        </view>
+        <view class="seller-info-auth">
+            <text class="seller-auth-title">邻居认证:</text>
+            <block wx:for="{{list.seller.neighborAuth}}" wx:key="{{index}}">
+                <image class="seller-auth-photo" src="{{item.photo}}" />
+            </block>
+        </view>
+    </view>
+    <!-- <view class="details-seller-trust">
+        <view class="details-trust-item details-trust-auth">
+            是否认证:
+            <text class="auth-status iconfont {{list.seller.neighborAuth ? 'status-true' : 'status-false'}} ">
+                {{list.seller.neighborAuth ? '已认证' : '未认证'}}
+            </text>
+        </view>
+        <view class="details-trust-item details-trust-number">
+            服务评分:
+            <text class="trust-number">{{list.seller.trust}}</text>
+        </view>
+    </view> -->
+    <view class="details-main">
+        <view class="main-desc">{{list.description}}</view>
+        <block wx:for="{{list.imglist}}" wx:key="{{index}}">
+            <image src="{{item}}" class="details-main-photo" />
+        </block>
+    </view>
+    <view class="details-buy">
+        <view class="details-buy-main">
+            <navigator class="details-buy-index" target="" url="/pages/index/index" hover-class="navigator-hover" open-type="navigate">
+                <view class="details-index-icon iconfont">首页</view>
+            </navigator>
+            <navigator class="details-buy-consult" target="" url="/pages/index/index" hover-class="navigator-hover" open-type="navigate">
+                <view class="details-consult-icon iconfont">咨询</view>
+            </navigator>
+            <view class="details-bottom-item item-share iconfont">
+                <button open-type='share' class="details-share-icon iconfont">转发</button>
+            </view>
+            <view class="details-bottom-item item-transmit iconfont" bindtap='onTransmit'>
+                <view class="details-transmit-icon iconfont">分享</view>
+            </view>
+            <!-- <view class="details-buy-price">{{list.price}}</view> -->
+            <button class="details-buy-button {{list.balance == 0 ? 'disabled' : ''}}" bindtap="onOrderShow">
+                {{list.stock == 0 ? '已售罄' : '立即购买'}}
+            </button>
+        </view>
+    </view>
+</view>
+<overlay id="J_details_order" class="details-order" customTitle='确认商品' customHeight="49%" bind:sure="onOrderSure">
+    <view class="details-order-main" slot="custom-content">
+        <view class="details-order-title">
+            <image src="{{list.productmap}}" class="order-title-pic" />
+            <view class="order-title-info">
+                <view class="title-info-price">￥{{list.unitprice}}</view>
+                <view class="title-info-stock">库存{{list.balance}}{{list.unit}}</view>
+                <view class="title-info-tip">请选择种类</view>
+            </view>
+        </view>
+        <view class="details-order-number">
+            <view class="order-number-title">购买数量:</view>
+            <view class="order-number-del {{buyNum == 1 ? 'disabled' : ''}} " bindtap="onItemNumChange" data-type="del">
+                -
+            </view>
+            <input type="number" value="{{buyNum}}" bindchange="buyInput" class="order-number-text" />
+            <view class="order-number-add {{buyNum == list.balance ? 'disabled' : ''}} " bindtap="onItemNumChange" data-type="add">
+                +
+            </view>
+        </view>
+        <view class="details-order-total">
+            <view class="order-totla-title">总价为:</view>
+            <view class="order-total-number">￥{{list.unitprice * buyNum}}</view>
+        </view>
+        <!-- <view class="details-order-receiving">
+            <view class="order-totla-title">收货地址：</view>
+            <view class="order-main">{{list.province}},{{list.city}},{{list.area}},{{list.communityname}},{{app.globlaData.userInfo.addressinfo}}</view>
+            <!-- <view class="weui-cell__bd">
+                <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+                    <view class="weui-select weui-select_in-select-after">
+                        {{countries[countryIndex]}}
+                    </view>
+                </picker>
+            </view> 
+        </view> -->
+    </view>
+</overlay>
+<overlay id="J_details_seller" class="details-seller" customTitle="卖家详情" customHeight="91%" sureButton="关闭" bind:sure="onSellerHide">
+    <view class="details-seller-main" slot="custom-content">
+        <view class="details-seller-title">
+            <image src="{{list.sellerinfo.avatar}}" class="seller-title-pic" />
+            <view class="seller-title-info">
+                <view class="title-info-price">{{list.sellerinfo.names}}</view>
+                <view class="title-info-stock">{{list.sellerinfo.addressinfo}}</view>
+                <view class="title-info-tip">信用值:{{list.sellerinfo.usetrust}}</view>
+            </view>
+        </view>
+        <view class="details-list-title">详细信息</view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-house iconfont" />
+            <view class="list-item-title">注册小区:</view>
+            <block wx:for="{{list.sellerinfo.selleraddresslist}}" wx:key="{{index}}">
+                <view class="list-item-address">{{item}}</view>
+            </block>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-timer iconfont" />
+            <view class="list-item-title">注册时间:</view>
+            <view class="list-item-time">{{list.sellerinfo.gmtcreate}}</view>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-type-number iconfont" />
+            <view class="list-item-title">在售商品数量:</view>
+            <view class="list-item-time">{{list.sellerinfo.instock}}种</view>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-order iconfont" />
+            <view class="list-item-title">交易单数:</view>
+            <view class="list-item-time">{{list.sellerinfo.usersoldordernumber}}单</view>
+        </view>
+        <view class="details-seller-list seller-list-auth">
+            <view class="seller-list-pic seller-list-neighbour iconfont" />
+            <view class="seller-list-item">
+                <view class="list-item-type">
+                    <text class="item-type-title">邻居认证:</text>
+                    <block wx:for="{{list.seller.neighborAuth}}" wx:key="{{index}}">
+                        <image class="seller-auth-photo" src="{{item.photo}}" />
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-card iconfont" />
+            <view class="seller-list-item">
+                <view class="list-item-type">
+                    <text class="item-type-title">身份证验真:</text>
+                    <text class="list-item-status {{list.sellerinfo.approvalstatus == 4 ? 'status-true' : 'status-false'}}">{{list.sellerinfo.approvalstatus == 4 ? '已认证' : '未认证'}}</text>
+                </view>
+                <view class="list-item-desc">{{list.sellerinfo.approvalstatus == 4 ? '已完成证件验真' : '未完成证件验真'}}</view>
+            </view>
+        </view>
+        <view class="details-seller-list">
+            <view class="seller-list-pic seller-list-iphone iconfont" />
+            <view class="seller-list-item">
+                <view class="list-item-type">
+                    <text class="item-type-title">手机号验证:</text>
+                    <text class="list-item-status {{list.sellerinfo.isphone == 'Y' ? 'status-true' : 'status-false'}}">{{list.sellerinfo.isphone =="Y" ? '已认证' : '未认证'}}</text>
+                </view>
+                <view class="list-item-desc">
+                    {{list.sellerinfo.isphone == "Y" ? '已完成手机号验证' : '未完成手机号验证'}}
+                </view>
+            </view>
+        </view>
+    </view>
+</overlay>
+<!-- canvas绘制分享图 -->
+<!-- <view class="canvas-box"> -->
+<canvas canvas-id="myCanvas" style="width:100%;height:100%;position:absolute;left:0;top:-9999999px;"></canvas>
+<!-- </view> -->
